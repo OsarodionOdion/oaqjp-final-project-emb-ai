@@ -15,8 +15,13 @@ def emotion_detect():
     '''
     # Retrieve text from the request arguments
     text_To_Analyze = request.args.get('textToAnalyze')
+
     # Pass the text to the emotion_detector function and store the response
     response = emotion_detector(text_To_Analyze)
+
+    # control flow for blank entries
+    if response['dominant_emotion'] is None:
+        return f'Invalid text! Please try again!'
 
     # Extract the dominant and sadness emotions for the return statement
     dominant_emotion = response.pop('dominant_emotion', None)
