@@ -1,3 +1,13 @@
+# Function for detecting emotions using the emotion predict function of the Watson NLP library
+
+'''
+URL, headers, and input json format for accessing the emotion predict function in the embedded Watson NLP libraries
+
+URL: 'https://sn-watson-emotion.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/EmotionPredict'
+Headers: {"grpc-metadata-mm-model-id": "emotion_aggregated-workflow_lang_en_stock"}
+Input json: { "raw_document": { "text": text_to_analyze } }
+
+'''
 import json
 import requests
 
