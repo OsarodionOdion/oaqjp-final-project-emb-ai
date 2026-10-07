@@ -1,6 +1,6 @@
 ''' Executing this function initiates the application of emotion detection to be
     executed ove the Flask channel and deployed on localhost:5000.
-''' 
+'''
 from flask import Flask, render_template, request
 from EmotionDetection.emotion_detection import emotion_detector
 
@@ -14,14 +14,14 @@ def emotion_detect():
         and confidence score for the provided text.
     '''
     # Retrieve text from the request arguments
-    text_To_Analyze = request.args.get('textToAnalyze')
+    text_to_analyze = request.args.get('textToAnalyze')
 
     # Pass the text to the emotion_detector function and store the response
-    response = emotion_detector(text_To_Analyze)
+    response = emotion_detector(text_to_analyze)
 
     # control flow for blank entries
     if response['dominant_emotion'] is None:
-        return f'Invalid text! Please try again!'
+        return "Invalid text! Please try again!"
 
     # Extract the dominant and sadness emotions for the return statement
     dominant_emotion = response.pop('dominant_emotion', None)
